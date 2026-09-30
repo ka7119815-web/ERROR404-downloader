@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>ERROR404</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+  --bg:#080812;
+  --card:#121222;
+  --card2:#19192d;
+  --text:#fff;
+  --muted:#9b9bb2;
+  --accent:#8b5cf6;
+  --accent2:#ec4899;
+  --border:rgba(255,255,255,.08);
+  --input:#0d0d19;
+}
+
+body.light{
+  --bg:#f5f6fb;
+  --card:#fff;
+  --card2:#f0f1f7;
+  --text:#161622;
+  --muted:#77798b;
+  --border:rgba(0,0,0,.08);
+  --input:#f4f4f8;
+}
+
+body.black{
+  --bg:#000;
+  --card:#050505;
+  --card2:#0b0b0b;
+  --text:#fff;
+  --muted:#888;
+  --border:#1b1b1b;
+  --input:#030303;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Tahoma,sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+.app{
+  max-width:600px;
+  margin:auto;
+  min-height:100vh;
+  padding-bottom:90px;
+}
+
+/* TOP */
+
+.top{
+  padding:22px 18px 8px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.logoIcon{
+  width:45px;
+  height:45px;
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#7c3aed,#ec4899);
+  box-shadow:0 8px 30px rgba(139,92,246,.35);
+}
+
+.logoIcon svg{
+  width:25px;
+  height:25px;
+}
+
+.logoText b{
+  display:block;
+  font-size:20px;
+  letter-spacing:1px;
+}
+
+.logoText span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.settingsBtn{
+  width:42px;
+  height:42px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.settingsBtn svg{
+  width:20px;
+}
+
+/* PAGES */
+
+.page{
+  display:none;
+  padding:10px 17px 20px;
+  animation:pageIn .25s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* HERO */
+
+.hero{
+  margin-top:12px;
+  padding:25px 20px;
+  border-radius:27px;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(236,72,153,.3),transparent 35%),
+    radial-gradient(circle at 10% 90%,rgba(124,58,237,.3),transparent 35%),
+    var(--card);
+  border:1px solid var(--border);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero h1{
+  margin:0 0 8px;
+  font-size:28px;
+}
+
+.hero p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.7;
+  font-size:13px;
+}
+
+.heroBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:14px;
+  padding:7px 11px;
+  border-radius:30px;
+  background:rgba(139,92,246,.13);
+  color:#bda7ff;
+  font-size:11px;
+}
+
+/* DOWNLOAD CARD */
+
+.downloadCard{
+  margin-top:15px;
+  padding:17px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:24px;
+}
+
+.inputBox{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:var(--input);
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:5px 8px 5px 13px;
+}
+
+.inputBox svg{
+  width:20px;
+  color:var(--muted);
+  flex-shrink:0;
+}
+
+input{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--text);
+  padding:13px 5px;
+  font-size:14px;
+}
+
+input::placeholder{
+  color:var(--muted);
+}
+
+.downloadBtn{
+  width:100%;
+  border:0;
+  margin-top:12px;
+  padding:15px;
+  border-radius:17px;
+  color:white;
+  font-size:15px;
+  font-weight:bold;
+  background:linear-gradient(100deg,#7c3aed,#ec4899);
+  box-shadow:0 10px 28px rgba(139,92,246,.28);
+  cursor:pointer;
+}
+
+.downloadBtn:active{
+  transform:scale(.98);
+}
+
+/* SECTION */
+
+.sectionTitle{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:24px 2px 12px;
+}
+
+.sectionTitle h2{
+  font-size:17px;
+  margin:0;
+}
+
+.sectionTitle span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* PLATFORMS */
+
+.platforms{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.platform{
+  min-height:91px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:19px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  color:var(--text);
+  cursor:pointer;
+  transition:.2s;
+}
+
+.platform:active{
+  transform:scale(.96);
+}
+
+.platform.selected{
+  border-color:var(--accent);
+  box-shadow:0 0 0 1px var(--accent),0 8px 25px rgba(139,92,246,.16);
+}
+
+.platformIcon{
+  width:36px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.platformIcon svg{
+  width:32px;
+  height:32px;
+}
+
+.platform span{
+  font-size:11px;
+}
+
+/* MUSIC */
+
+.musicHero{
+  margin-top:12px;
+  padding:25px 20px;
+  border-radius:27px;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(16,185,129,.28),transparent 35%),
+    radial-gradient(circle at 10% 90%,rgba(59,130,246,.28),transparent 35%),
+    var(--card);
+  border:1px solid var(--border);
+}
+
+.musicIcon{
+  width:58px;
+  height:58px;
+  border-radius:19px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#10b981,#3b82f6);
+  margin-bottom:15px;
+}
+
+.musicIcon svg{
+  width:31px;
+}
+
+.formatRow{
+  display:flex;
+  gap:9px;
+  margin-top:12px;
+}
+
+.format{
+  flex:1;
+  padding:12px;
+  text-align:center;
+  border-radius:14px;
+  background:var(--card2);
+  border:1px solid var(--border);
+  font-size:12px;
+  cursor:pointer;
+}
+
+.format.selected{
+  border-color:#10b981;
+  color:#10b981;
+}
+
+/* DOWNLOADS */
+
+.empty{
+  text-align:center;
+  padding:55px 20px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:25px;
+  margin-top:15px;
+}
+
+.emptyIcon{
+  width:65px;
+  height:65px;
+  margin:auto auto 15px;
+  border-radius:21px;
+  background:var(--card2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.emptyIcon svg{
+  width:30px;
+  color:var(--muted);
+}
+
+.empty h3{
+  margin:0 0 7px;
+  font-size:16px;
+}
+
+.empty p{
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* SETTINGS */
+
+.settingCard{
+  margin-top:14px;
+  padding:17px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+}
+
+.settingTitle{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin-bottom:15px;
+}
+
+.settingTitleIcon{
+  width:40px;
+  height:40px;
+  border-radius:13px;
+  background:var(--card2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.settingTitleIcon svg{
+  width:20px;
+}
+
+.settingTitle b{
+  font-size:14px;
+}
+
+.settingTitle small{
+  display:block;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+.themeRow{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.theme{
+  padding:13px 5px;
+  border-radius:14px;
+  background:var(--card2);
+  border:1px solid var(--border);
+  text-align:center;
+  font-size:11px;
+  cursor:pointer;
+}
+
+.theme.active{
+  border-color:var(--accent);
+}
+
+.themePreview{
+  height:30px;
+  border-radius:9px;
+  margin-bottom:7px;
+}
+
+.darkPreview{background:#10101d}
+.lightPreview{background:#f5f6fb}
+.blackPreview{background:#000;border:1px solid #222}
+
+.serverBtn{
+  width:100%;
+  margin-top:10px;
+  padding:13px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--card2);
+  color:var(--text);
+  font-weight:bold;
+}
+
+/* STATUS */
+
+.status{
+  margin-top:10px;
+  padding:12px;
+  border-radius:13px;
+  font-size:12px;
+  display:none;
+}
+
+.status.show{display:block}
+.status.ok{
+  background:rgba(16,185,129,.1);
+  color:#10b981;
+}
+.status.error{
+  background:rgba(239,68,68,.1);
+  color:#ef4444;
+}
+
+/* NAV */
+
+.bottomNav{
+  position:fixed;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(570px,calc(100% - 24px));
+  height:68px;
+  padding:7px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  background:rgba(15,15,27,.93);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:22px;
+  z-index:100;
+  box-shadow:0 12px 40px rgba(0,0,0,.3);
+}
+
+body.light .bottomNav{
+  background:rgba(255,255,255,.94);
+  border-color:rgba(0,0,0,.08);
+}
+
+.navBtn{
+  border:0;
+  background:transparent;
+  color:#88889d;
+  border-radius:16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  font-size:9px;
+}
+
+.navBtn svg{
+  width:21px;
+  height:21px;
+}
+
+.navBtn.active{
+  color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#ec4899);
+  box-shadow:0 5px 18px rgba(139,92,246,.3);
+}
+
+body.light .navBtn.active{
+  color:white;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%) translateY(-80px);
+  background:var(--card);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:12px 17px;
+  border-radius:14px;
+  font-size:12px;
+  z-index:999;
+  transition:.3s;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.toast.show{
+  transform:translateX(-50%) translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="top">
+  <div class="logo">
+    <div class="logoIcon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+        <path d="M8 8l8 8M16 8l-8 8"/>
+        <circle cx="12" cy="12" r="9"/>
+      </svg>
+    </div>
+    <div class="logoText">
+      <b id="appName">ERROR404</b>
+      <span>Video & Music Downloader</span>
+    </div>
+  </div>
+
+  <button class="settingsBtn" onclick="openPage('settings')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/>
+      <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5v.1h-2.5v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H6.5v-2.5h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V4.5h2.5v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1h.1V13h-.1a1.7 1.7 0 0 0-1.5 1Z"/>
+    </svg>
+  </button>
+</header>
+
+<!-- HOME -->
+
+<section class="page active" id="home">
+
+  <div class="hero">
+    <div class="heroBadge">⚡ تحميل سريع وسهل</div>
+    <h1>حمّل أي فيديو</h1>
+    <p>انسخ رابط الفيديو من المنصة وحطه هنا، وخلّي ERROR404 يعمل الباقي.</p>
+  </div>
+
+  <div class="downloadCard">
+    <div class="inputBox">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"/>
+        <path d="M14 11a5 5 0 0 0-7.1-.1l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"/>
+      </svg>
+      <input id="videoUrl" type="url" placeholder="الصق رابط الفيديو هنا">
+    </div>
+
+    <button class="downloadBtn" onclick="downloadVideo()">
+      تحميل الفيديو
+    </button>
+
+    <div id="videoStatus" class="status"></div>
+  </div>
+
+  <div class="sectionTitle">
+    <h2>المنصات</h2>
+    <span>اختر المنصة</span>
+  </div>
+
+  <div class="platforms">
+
+    <div class="platform selected" data-platform="TikTok" onclick="selectPlatform(this)">
+      <div class="platformIcon">
+        <svg viewBox="0 0 40 40">
+          <path fill="#00f2ea" d="M24 8c1 5 3 7 8 8v5c-3 0-6-1-8-3v10c0 6-4 10-10 10-5 0-9-4-9-9s4-9 9-9c1 0 2 0 3 .4v5c-1-.5-2-.7-3-.7-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4V8h6z"/>
+          <path fill="#ff0050" d="M26 8c1 5 3 7 8 8v2c-5-1-8-3-9-7h-4v19c0 4-2 7-6 8 5 1 10-3 10-9V13c1 2 3 3 6 4v-3c-3-1-4-3-5-6z"/>
+        </svg>
+      </div>
+      <span>TikTok</span>
+    </div>
+
+    <div class="platform" data-platform="YouTube" onclick="selectPlatform(this)">
+      <div class="platformIcon">
+        <svg viewBox="0 0 40 40">
+          <rect x="3" y="9" width="34" height="22" rx="8" fill="#ff0033"/>
+          <path d="M17 14l11 6-11 6z" fill="white"/>
+        </svg>
+      </div>
+      <span>YouTube</span>
+    </div>
+
+    <div class="platform" data-platform="Instagram" onclick="selectPlatform(this)">
+      <div class="platformIcon">
+        <svg viewBox="0 0 40 40" fill="none">
+          <rect x="5" y="5" width="30" height="30" rx="9" stroke="#e1306c" stroke-width="4"/>
+          <circle cx="20" cy="20" r="7" stroke="#e1306c" stroke-width="3"/>
+          <circle cx="29" cy="11" r="2" fill="#e1306c"/>
+        </svg>
+      </div>
+      <span>Instagram</span>
+    </div>
+
+    <div class="platform" data-platform="Facebook" onclick="selectPlatform(this)">
+      <div class="platformIcon">
+        <svg viewBox="0 0 40 40">
+          <circle cx="20" cy="20" r="17" fill="#1877f2"/>
+          <path fill="white" d="M22.5 33V22.5h4l.6-4.1h-4.6v-2.7c0-1.2.6-2 2.2-2h2.5V10c-.7-.1-1.8-.2-3.1-.2-3.3 0-5.6 2-5.6 5.7v2.9h-3.8v4.1h3.8V33z"/>
+        </svg>
+      </div>
+      <span>Facebook</span>
+    </div>
+
+    <div class="platform" data-platform="X" onclick="selectPlatform(this)">
+      <div class="platformIcon">
+        <svg viewBox="0 0 40 40">
+          <path fill="currentColor" d="M8 7h8l6 8 7-8h3L23 18l9 15h-8l-6-9-8 9H7l10-12z"/>
+        </svg>
+      </div>
+      <span>X</span>
+    </div>
+
+    <div class="platform" data-platform="Snapchat" onclick="selectPlatform(this)">
+      <div class="platformIcon">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#ffd600" stroke-width="2">
+          <path d="M20 7c-7 0-9 6-8 12-1 3-3 4-5 5 2 2 4 1 5 3 1 2 3 1 5 2 1 2 5 2 6 0 2-1 4 0 5-2 1-2 3-1 5-3-2-1-4-2-5-5 1-6-1-12-8-12z"/>
+        </svg>
+      </div>
+      <span>Snapchat</span>
+    </div>
+
+    <div class="platform" data-platform="Reddit" onclick="selectPlatform(this)">
+      <div class="platformIcon">
+        <svg viewBox="0 0 40 40">
+          <circle cx="20" cy="22" r="13" fill="#ff4500"/>
+          <circle cx="15" cy="21" r="2" fill="white"/>
+          <circle cx="25" cy="21" r="2" fill="white"/>
+          <path d="M15 26c3 3 7 3 10 0" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M22 9l2 5" stroke="#ff4500" stroke-width="3"/>
+          <circle cx="25" cy="8" r="3" fill="#ff4500"/>
+        </svg>
+      </div>
+      <span>Reddit</span>
+    </div>
+
+    <div class="platform" data-platform="Pinterest" onclick="selectPlatform(this)">
+      <div class="platformIcon">
+        <svg viewBox="0 0 40 40">
+          <circle cx="20" cy="20" r="17" fill="#e60023"/>
+          <path fill="white" d="M22 10c-6 0-10 4-10 9 0 4 2 6 4 6 1 0 2-.5 2-2l1-4c0-2 1-4 4-4 3 0 4 2 4 5 0 4-2 7-5 7-1 0-2 0-3-.5l-1 5-2 4h3l2-7c1 1 2 1 3 1 5 0 8-4 8-10 0-5-4-9-10-9z"/>
+        </svg>
+      </div>
+      <span>Pinterest</span>
+    </div>
+
+    <div class="platform" data-platform="Twitch" onclick="selectPlatform(this)">
+      <div class="platformIcon">
+        <svg viewBox="0 0 40 40">
+          <path fill="#9146ff" d="M5 4h30v21l-8 8h-7l-5 5v-5H5z"/>
+          <path fill="white" d="M15 11h4v10h-4zm8 0h4v10h-4z"/>
+        </svg>
+      </div>
+      <span>Twitch</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- MUSIC -->
+
+<section class="page" id="music">
+
+  <div class="musicHero">
+    <div class="musicIcon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+        <path d="M9 18V5l10-2v13"/>
+        <circle cx="6" cy="18" r="3"/>
+        <circle cx="16" cy="16" r="3"/>
+      </svg>
+    </div>
+
+    <h1>تنزيل الأغاني</h1>
+    <p>حوّل روابط الفيديوهات إلى ملفات صوتية واستمتع بالموسيقى.</p>
+  </div>
+
+  <div class="downloadCard">
+
+    <div class="inputBox">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"/>
+        <path d="M14 11a5 5 0 0 0-7.1-.1l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"/>
+      </svg>
+      <input id="musicUrl" type="url" placeholder="الصق رابط الأغنية هنا">
+    </div>
+
+    <div class="formatRow">
+      <div class="format selected" onclick="selectFormat(this,'mp3')">MP3</div>
+      <div class="format" onclick="selectFormat(this,'m4a')">M4A</div>
+    </div>
+
+    <button class="downloadBtn" onclick="downloadMusic()">
+      تنزيل الأغنية
+    </button>
+
+    <div id="musicStatus" class="status"></div>
+  </div>
+
+</section>
+
+<!-- DOWNLOADS -->
+
+<section class="page" id="downloads">
+
+  <div class="hero">
+    <div class="heroBadge">📥 الملفات</div>
+    <h1>التنزيلات</h1>
+    <p>هنا هنخلي كل الملفات اللي تم تنزيلها تظهر داخل التطبيق.</p>
+  </div>
+
+  <div class="empty">
+    <div class="emptyIcon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <path d="M12 3v12"/>
+        <path d="m7 10 5 5 5-5"/>
+        <path d="M5 21h14"/>
+      </svg>
+    </div>
+    <h3>لسه مفيش تنزيلات</h3>
+    <p>ابدأ بتنزيل فيديو أو أغنية وهتظهر هنا.</p>
+  </div>
+
+</section>
+
+<!-- SETTINGS -->
+
+<section class="page" id="settings">
+
+  <div class="hero">
+    <div class="heroBadge">⚙ تخصيص التطبيق</div>
+    <h1>الإعدادات</h1>
+    <p>غيّر شكل ERROR404 واضبط الاتصال بالسيرفر.</p>
+  </div>
+
+  <div class="settingCard">
+
+    <div class="settingTitle">
+      <div class="settingTitleIcon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5v.1h-2.5v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H6.5v-2.5h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V4.5h2.5v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1h.1V13h-.1a1.7 1.7 0 0 0-1.5 1Z"/>
+        </svg>
+      </div>
+      <div>
+        <b>شكل التطبيق</b>
+        <small>اختار المظهر اللي يعجبك</small>
+      </div>
+    </div>
+
+    <div class="themeRow">
+      <div class="theme active" onclick="setTheme('dark',this)">
+        <div class="themePreview darkPreview"></div>
+        ليلي
+      </div>
+
+      <div class="theme" onclick="setTheme('light',this)">
+        <div class="themePreview lightPreview"></div>
+        أبيض
+      </div>
+
+      <div class="theme" onclick="setTheme('black',this)">
+        <div class="themePreview blackPreview"></div>
+        أسود
+      </div>
+    </div>
+
+  </div>
+
+  <div class="settingCard">
+
+    <div class="settingTitle">
+      <div class="settingTitleIcon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>
+        </svg>
+      </div>
+      <div>
+        <b>السيرفر</b>
+        <small>اتصال محرك التحميل</small>
+      </div>
+    </div>
+
+    <div class="inputBox">
+      <input id="serverUrl" value="http://127.0.0.1:3000">
+    </div>
+
+    <button class="serverBtn" onclick="testServer()">
+      اختبار الاتصال بالسيرفر
+    </button>
+
+    <div id="serverStatus" class="status"></div>
+
+  </div>
+
+  <div class="settingCard">
+
+    <div class="settingTitle">
+      <div class="settingTitleIcon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 5h16v14H4z"/>
+          <path d="M8 9h8M8 13h5"/>
+        </svg>
+      </div>
+      <div>
+        <b>اسم التطبيق</b>
+        <small>الاسم الظاهر داخل الواجهة</small>
+      </div>
+    </div>
+
+    <div class="inputBox">
+      <input id="customName" placeholder="ERROR404">
+    </div>
+
+    <button class="serverBtn" onclick="saveName()">
+      حفظ الاسم
+    </button>
+
+  </div>
+
+</section>
+
+</div>
+
+<!-- NAV -->
+
+<nav class="bottomNav">
+
+  <button class="navBtn active" data-page="home" onclick="openPage('home')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+      <path d="M9 21v-7h6v7"/>
+    </svg>
+    الرئيسية
+  </button>
+
+  <button class="navBtn" data-page="music" onclick="openPage('music')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18V5l10-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="16" cy="16" r="3"/>
+    </svg>
+    الأغاني
+  </button>
+
+  <button class="
